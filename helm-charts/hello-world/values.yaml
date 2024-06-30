@@ -1,0 +1,45 @@
+base_config:
+  appName: hello-world-demo
+  namespace: default
+
+deployment:
+  replicas: 1
+  containers:
+    hello_world:
+      image:
+        name: nickkopyl/test
+        tag: 0.1.0
+      port: 8080
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      livenessProbe:
+        path: /healthz
+        port: 8080
+        initialDelaySeconds: 3
+        periodSeconds: 15
+      readinessProbe:
+        path: /healthz
+        port: 8080
+        initialDelaySeconds: 3
+        periodSeconds: 15
+      startupProbe:
+        path: /healthz
+        port: 8080
+        failureThreshold: 30
+        periodSeconds: 10
+
+service:
+  protocol: TCP
+  port: 80
+  targetPort: 8080
+
+configmap:
+  data:
+    CLOUD_NAME: "No specified Cloud"
+
+ingress: {}
