@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  {{ .Values.base_config.appName}}
+  namespace: {{ .Values.base_config.namespace}}
+spec:
+  replicas: {{ .Values.deployment.replicas}}
+  selector:
+    matchLabels:
+      app: {{ .Values.base_config.appName}}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.base_config.appName}}
+    spec:
+      containers:
+      - name:  {{ .Values.base_config.appName}}
+        image:  "{{ .Values.deployment.containers.hello_world.image.name }}:{{ .Values.deployment.containers.hello_world.image.tag }}"
+        envFrom:
+          - configMapRef:
+              name: {{ .Values.base_config.appName}}
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "{{ .Values.deployment.containers.hello_world.resources.requests.memory}}"
+            cpu: "{{ .Values.deployment.containers.hello_world.resources.requests.cpu}}"
+          limits:
+            memory: "{{ .Values.deployment.containers.hello_world.resources.limits.memory}}"
+            cpu: "{{ .Values.deployment.containers.hello_world.resources.limits.memory}}"
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.deployment.containers.hello_world.livenessProbe.path}}
+            port: {{ .Values.deployment.containers.hello_world.livenessProbe.port}}
+          initialDelaySeconds: {{ .Values.deployment.containers.hello_world.livenessProbe.initialDelaySeconds}}
+          periodSeconds: {{ .Values.deployment.containers.hello_world.livenessProbe.periodSeconds}}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.deployment.containers.hello_world.readinessProbe.path}}
+            port: {{ .Values.deployment.containers.hello_world.readinessProbe.port}}
+          initialDelaySeconds: {{ .Values.deployment.containers.hello_world.readinessProbe.initialDelaySeconds}}
+          periodSeconds: {{ .Values.deployment.containers.hello_world.readinessProbe.periodSeconds}}
+        startupProbe:
+          httpGet:
+            path: {{ .Values.deployment.containers.hello_world.startupProbe.path }}
+            port: {{ .Values.deployment.containers.hello_world.startupProbe.port }}
+          failureThreshold: {{ .Values.deployment.containers.hello_world.startupProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.deployment.containers.hello_world.startupProbe.periodSeconds }}

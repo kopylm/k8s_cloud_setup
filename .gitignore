@@ -1,0 +1,8 @@
+.idea
+.vscode/
+
+# Terraform eks files
+eks/terraform/.terraform/*
+eks/terraform/*.tfstate
+eks/terraform/*.tfstate.*
+eks/terraform/.terraform.lock.hcl

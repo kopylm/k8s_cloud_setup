@@ -1,0 +1,11 @@
+controller:
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "alb"
+      service.beta.kubernetes.io/aws-load-balancer-subnets: "" # Need to add subnets id's
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
+  ingressClassResource:
+    name: "nginx"
+    enabled: true
+    default: true
