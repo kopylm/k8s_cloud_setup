@@ -1,5 +1,5 @@
 provider "aws" {
-  profile = "terraform"
+  profile = "mend-hiring"
   region  = "us-east-1"
 }
 
@@ -12,7 +12,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "cloud-setup-terraform-state-test"
+    bucket = "cloud-setup-terraform-state"
     key    = "state/terraform.tfstate"
     region = "us-east-1"
   }

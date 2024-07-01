@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.base_config.appName}}
   namespace: {{ .Values.base_config.namespace}}
 spec:
-  ingressClassName: nginx
+  ingressClassName: {{ .Values.ingress.ingressClassName}}
   rules:
   - http:
       paths:

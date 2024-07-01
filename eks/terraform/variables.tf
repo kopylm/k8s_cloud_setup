@@ -7,7 +7,7 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "Name" {
+variable "project_name" {
   description = "Project main name"
   type        = string
   default     = "EKS-cloud-setup"

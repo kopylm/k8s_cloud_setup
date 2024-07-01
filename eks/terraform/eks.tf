@@ -1,8 +1,11 @@
+################################################################################
+# EKS module configuration
+################################################################################
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.15.0"
 
-  cluster_name                             = "${var.Name}-cluster"
+  cluster_name                             = "${var.project_name}-cluster"
   cluster_version                          = var.eks_cluster_version
   enable_cluster_creator_admin_permissions = true
   create_cloudwatch_log_group              = false

@@ -2,11 +2,14 @@ locals {
   selected_az = slice(data.aws_availability_zones.available.names, 0, 2)
 }
 
+################################################################################
+# VPC module configuration
+################################################################################
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
-  name = "${var.Name}-vpc"
+  name = "${var.project_name}-vpc"
   cidr = var.vpc_cidr_block
 
   azs             = local.selected_az

@@ -1,0 +1,6 @@
+configmap:
+  data:
+    CLOUD_NAME: "Azure"
+
+ingress:
+  ingressClassName: azure-application-gateway

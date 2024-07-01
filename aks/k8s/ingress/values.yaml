@@ -1,0 +1,14 @@
+appgw:
+  name: "appgw-ingress"
+  resourceGroup: "aks-rg"
+  subscriptionId: "need to add subscription id"
+  shared: false
+
+armAuth:
+  type: managed
+  identityClientID: "need to add client id"
+
+rbac:
+  enabled: true
+
+verbosityLevel: 3
