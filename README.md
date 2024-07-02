@@ -1,5 +1,5 @@
 # Cloud setup overview
-This guide covers the setup and deployment of infrastructure on [AWS](https://aws.amazon.com/) and [Azure](https://azure.microsoft.com/) using Terraform, </br>
+This guide covers the setup and deployment of infrastructure on [AWS](https://aws.amazon.com/) (EKS) and [Azure](https://azure.microsoft.com/) (AKS) using Terraform, </br>
 including the deployment of [Kubernetes](https://kubernetes.io/) clusters and Ingress controllers (ALB and Application Gateway). <br />
 Additionally, it provides instructions to deploy a [Python Flask](https://flask.palletsprojects.com/en/3.0.x/) "Hello World" application using Helm.
 
